@@ -12,7 +12,8 @@ export const StoreProvider = ({children})=>{
       setCart(newCart)
       saveCartLocalStorage(newCart)
     }
-  
+    
+    //Añadir producto al carro
     const AddCardProduct = (product)=>{
       const isProductInCart = cart.some((item) => item.id === product.id)
   
@@ -25,6 +26,8 @@ export const StoreProvider = ({children})=>{
       }
     }
 
+
+    //Eliminar producto del carro
     const DeleteProduct = (id)=>{
 
         const updateCart = cart.filter((product)=> product.id !== id);
@@ -34,8 +37,15 @@ export const StoreProvider = ({children})=>{
         
       }
 
+
+    const QuantityProduct = () =>{
+
+        const numberCart = cart.length;
+        return numberCart
+    }
+
     return(
-        <StoreContext.Provider value={{cart , AddCardProduct , DeleteProduct}}>
+        <StoreContext.Provider value={{cart , AddCardProduct , DeleteProduct, QuantityProduct}}>
             {children}
         </StoreContext.Provider>
     )

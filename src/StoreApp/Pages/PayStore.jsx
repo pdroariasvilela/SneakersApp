@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { getCartFromLocalStorage } from '../../services/LocalStorageUtils'
 import { useStore } from '../Context/storeProvider'
+import styled from '@emotion/styled'
+
+const ContainerPay = styled.div`
+margin-top: 60px;
+`
 
 export default function PayStore() {
 
@@ -23,7 +28,7 @@ export default function PayStore() {
   // }
 
   return (
-    <>
+    <ContainerPay>
         <h1>Pagar</h1>
         <hr />
 
@@ -37,6 +42,6 @@ export default function PayStore() {
         ))}
         
 
-    </>
+    </ContainerPay>
   )
 }

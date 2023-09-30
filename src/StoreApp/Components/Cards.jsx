@@ -3,7 +3,6 @@ import styled from "@emotion/styled";
 
 
 import { zapatillas } from "../../services/zapatillas";
-import { saveCartLocalStorage , getCartFromLocalStorage } from "../../services/LocalStorageUtils";
 import { useStore } from "../Context/storeProvider";
 
 export default function Cards() {
