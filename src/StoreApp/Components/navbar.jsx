@@ -22,7 +22,7 @@ export default function Navbar() {
                 className="navbar-brand" 
                 to="/home"
             >
-            <h1>STORE APP</h1>
+            <h1>Sneeker APP</h1>
         </NavLink>
         </div>
 

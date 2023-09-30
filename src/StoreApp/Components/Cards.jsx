@@ -74,7 +74,7 @@ export default function Cards() {
         <div>
           <h5>{zapatillasData.marca}</h5>
           <p>{zapatillasData.nombre}</p>
-          <p>S/.{zapatillasData.precio}.00</p>
+          <p>S/.{zapatillasData.precio}</p>
           <Button onClick={() => AddCardProduct(zapatillasData)}>Agregar</Button>
         </div>
         </ContainerCard>
