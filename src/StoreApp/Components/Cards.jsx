@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 
 import { zapatillas } from "../../services/zapatillas";
 import { saveCartLocalStorage , getCartFromLocalStorage } from "../../services/LocalStorageUtils";
+import { useStore } from "../Context/storeProvider";
 
 export default function Cards() {
   const ContainerCard = styled.div`
@@ -36,29 +37,14 @@ export default function Cards() {
     color : white ;
     padding : 5px;
   `
-  const [cart , setCart] = useState(getCartFromLocalStorage())
+
+
+  const {cart , AddCardProduct } = useStore()
 
   useEffect(() => {
     console.log(cart);
   }, [cart]);
 
-  const updateCart = (newCart)=>{
-
-    setCart(newCart)
-    saveCartLocalStorage(newCart)
-  }
-
-  const AddCardProduct = (product)=>{
-    const isProductInCart = cart.some((item) => item.id === product.id)
-
-    if(!isProductInCart){
-      const newCart = [...cart, product]
-      updateCart(newCart)
-
-    }else{
-      console.log("El producto ya esta en el carrito")
-    }
-  }
 
 
 
