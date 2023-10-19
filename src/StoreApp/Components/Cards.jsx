@@ -11,7 +11,7 @@ export default function Cards() {
     display: flex;
     flex-direction : column;
     text-align : center;
-    border : 1px solid gray;
+    // border : .5px solid gray;
     border-radius : 10px;
     margin : 30px;
     padding : 20px;
@@ -35,7 +35,24 @@ export default function Cards() {
     background : black ;
     color : white ;
     padding : 5px;
+
+    border: none;
+    outline: none;
   `
+
+  const PriceNormal = styled.p`
+    text-decoration:line-through;
+  `
+
+  const PriceOferta = styled.p`
+    color : red;
+    font-weight: 700;
+`
+
+ const BoxInfoCard = styled.div`
+    margin : 3px;
+    line-height: 1;
+ `
 
 
   const {cart , AddCardProduct } = useStore()
@@ -56,15 +73,15 @@ export default function Cards() {
         <Img>
           <img src={zapatillasData.url_imagen} alt="" />
         </Img>
-        <div>
+        <BoxInfoCard>
           <h5>{zapatillasData.marca}</h5>
           <p>{zapatillasData.nombre}</p>
-          <p>S/.{zapatillasData.precio}</p>
+          <PriceNormal>S/.{zapatillasData.precio}</PriceNormal>
+          <PriceOferta> Oferta S/.{zapatillasData.precio_oferta}</PriceOferta>
           <Button onClick={() => AddCardProduct(zapatillasData)}>Agregar</Button>
-        </div>
+        </BoxInfoCard>
         </ContainerCard>
         ))}
     </>
-
   );
 }

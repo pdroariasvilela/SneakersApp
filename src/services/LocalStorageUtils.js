@@ -1,4 +1,3 @@
-
 // Guardar el carrito en el localStorage
 export const saveCartLocalStorage = (cart)=>{
     localStorage.setItem('cart' , JSON.stringify(cart))
