@@ -19,29 +19,25 @@ const Options = styled.div`
 
 export default function PayStore() {
 
+  
   const {cart , setCart , DeleteProduct} = useStore()
-  const [QuantityProduct , SetQuantityProduct] = useState(setCart)
 
-  // const handleSumProduct = (productId) => {
-  //   SetQuantityProduct((prevCart) =>
-  //     prevCart.map((item) =>
-  //       item.id === productId
-  //         ? { ...item, quantity: item.quantity + 1 }
-  //         : item
-  //     )
-  //   );
-  // };
+  const [productQuantities, setProductQuantities] = useState({});
+
+  const handleSumProduct = (productId) => {
+    setProductQuantities((prevQuantities) => ({
+      ...prevQuantities,
+      [productId]: (prevQuantities[productId] || 0) + 1,
+    }));
+  };
 
 
-  // const handleRestProduct = (productId) => {
-  //   SetQuantityProduct((prevCart) =>
-  //     prevCart.map((item) =>
-  //       item.id === productId
-  //         ? { ...item, quantity: item.quantity - 1 }
-  //         : item
-  //     )
-  //   );
-  // };
+  const handleRestProduct = (productId) => {
+    setProductQuantities((prevQuantities) => ({
+      ...prevQuantities,
+      [productId]: Math.max((prevQuantities[productId]) - 1, 0),
+    }));
+  };
 
 
   return (
@@ -53,13 +49,13 @@ export default function PayStore() {
         <BoxInfo key={index}>
         <p>{mostrar.marca}</p>
         <p>{mostrar.nombre}</p>  
-        <p>{mostrar.precio}</p>
+        <p>Precio : {mostrar.precio}</p>
 
-        <Options key={index}>   
+        <Options>   
           <div>
-            <button onClick={()=> handleSumProduct(mostrar.id)}>+</button>
-            <p>{QuantityProduct}</p>
-            <button onClick={()=> handleRestProduct(mostrar.id)}>-</button>
+            <button onClick={()=>handleSumProduct(mostrar.id)}>+</button>
+            <p>{productQuantities[mostrar.id]}</p>
+            <button onClick={()=>handleRestProduct(mostrar.id)}>-</button>
           </div>
 
           <button onClick={()=> DeleteProduct(mostrar.id)}>Eliminar</button>
