@@ -7,16 +7,16 @@ import { useStore } from "../Context/storeProvider";
 
 export default function Cards() {
   const ContainerCard = styled.div`
-    width : 300px;
+    width : 250px;
     display: flex;
     flex-direction : column;
-    text-align : center;
-    // border : .5px solid gray;
     border-radius : 10px;
-    margin : 30px;
+    margin : 5px;
     padding : 20px;
     box-shadow: 5px 5px 15px gray;
-
+    overflow: hidden;
+    align-items: center;
+    text-align: left;
   `;
 
   const Img = styled.div`
@@ -30,8 +30,9 @@ export default function Cards() {
   `;
   
   const Button = styled.button`
-    border-radius : 5px;
-    width : 70%;
+    border-radius : 20px;
+    width : 100%;
+    height: 40px;
     background : black ;
     color : white ;
     padding : 5px;
@@ -50,8 +51,11 @@ export default function Cards() {
 `
 
  const BoxInfoCard = styled.div`
+    width: 100%;
     margin : 3px;
     line-height: 1;
+    margin-left: 33px;
+    
  `
 
 
@@ -78,8 +82,8 @@ export default function Cards() {
           <p>{zapatillasData.nombre}</p>
           <PriceNormal>S/.{zapatillasData.precio}</PriceNormal>
           <PriceOferta> Oferta S/.{zapatillasData.precio_oferta}</PriceOferta>
-          <Button onClick={() => AddCardProduct(zapatillasData)}>Agregar</Button>
         </BoxInfoCard>
+          <Button onClick={() => AddCardProduct(zapatillasData)}>COMPRAR</Button>
         </ContainerCard>
         ))}
     </>
